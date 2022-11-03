@@ -7,4 +7,4 @@
 - [gitlog.txt](https://github.com/kanuuna1/ohte/blob/master/laskarit/viikko1/gitlog.txt)
 - [komentorivi.txt](https://github.com/kanuuna1/ohte/blob/master/laskarit/viikko1/komentorivi.txt)
 
-### Viikko 2
+
