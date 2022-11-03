@@ -1,0 +1,136 @@
+commit 79c2dc53581593cf20ccf7636fbede0df307f5f5
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Thu Nov 3 11:12:50 2022 +0200
+
+    commitä
+    
+    moi
+    q
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ tiedostoja/file3             | 2 ++
+ 3 files changed, 2 insertions(+)
+
+commit 97c486543e41858609f892ed0f83c2a1d9934ca3
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Thu Nov 3 11:09:02 2022 +0200
+
+    uusi hakemisto
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 23380a4f0b6d58674b5fd6b3b34d06e831dd4420
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Thu Nov 3 11:06:07 2022 +0200
+
+    kolmas
+
+ kolmas.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 3a48de3ccbc7b71147e008b41e1483c83af6d882
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Thu Nov 3 11:03:21 2022 +0200
+
+    muutoksia
+
+ eka.txt    | 8 ++------
+ kolmas.txt | 3 ++-
+ 2 files changed, 4 insertions(+), 7 deletions(-)
+
+commit d010c4683a8318216cfff17c08a483392603b80e
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Thu Nov 3 11:01:48 2022 +0200
+
+    nimenvaihdos
+
+ tiedosto.txt | 44 --------------------------------------------
+ 1 file changed, 44 deletions(-)
+
+commit 5f742070a62757d6a142d0b53074531c04e2ecb3
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Thu Nov 3 11:01:03 2022 +0200
+
+    nimenvaihdos
+
+ eka.txt | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
+
+commit 98fe459de51989037b23b4647de6b1f468b2df8f
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Thu Nov 3 11:00:07 2022 +0200
+
+    poista toinen
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 427d10a6124f628a60fdd333ff2a40a2c5314803
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Thu Nov 3 10:58:15 2022 +0200
+
+    lisää ja poista tekstiä
+
+ tiedosto.txt | 24 +++++++++++-------------
+ 1 file changed, 11 insertions(+), 13 deletions(-)
+
+commit 4df3e3272c5e93842b36ecad676007db73acd7d2
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Thu Nov 3 10:56:43 2022 +0200
+
+    lisää paljon tekstiä
+
+ tiedosto.txt | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+
+commit bf2b7482fdd17350aea2ae84181d8a958ac4109e
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Tue Nov 1 12:05:57 2022 +0200
+
+    add stuff
+
+ stuff/tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 5f51480bc6fabf7e7b8e54a6848cc3a62b33566a
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Tue Nov 1 12:04:51 2022 +0200
+
+    muutoksia
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 025badebdec21bf55df2070fa725df1556dff297
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Tue Nov 1 12:04:11 2022 +0200
+
+    Kolmas lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 406304d6edfef50fc916db1fdade54118dbc3e50
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Tue Nov 1 12:02:14 2022 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 2a3227a18c826312d6f1dca4bdfb5906cc7678d5
+Author: kanuuna1 <anu.nissinen@helsinki.fi>
+Date:   Tue Nov 1 12:00:57 2022 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
