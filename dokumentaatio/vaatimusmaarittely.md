@@ -2,7 +2,7 @@
 
 
 ## Sovelluksen tarkoitus
-Tässä ohjelmistotekniikan harjoitustyössä on tarkoitus toteuttaa [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)-peli. Pelissä kone arpoo neljästä erivärisestä nappulasta koostuvan rivin, jonka pelaajan on määrä ratkoa.  
+Tässä ohjelmistotekniikan harjoitustyössä on tarkoitus toteuttaa [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)-peli . Pelissä kone arpoo neljästä erivärisestä nappulasta koostuvan rivin, jonka pelaajan on määrä ratkoa.  
 
 ## Käyttäjät 
 Käyttäjärooleja on vain yksi eli pelaaja.  
