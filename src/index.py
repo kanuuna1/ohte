@@ -6,6 +6,7 @@ def main():
     screen = pygame.display.set_mode([400, 600])
     pygame.display.set_caption("Mastermind")
     
+    
     running = True
     while running:
         for event in pygame.event.get():
