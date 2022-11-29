@@ -6,7 +6,7 @@
 | 25.11. | 5 | Pygameen ja invokeen tutustuminen |
 | 26.11. | 3 | Pylint, arkkitehtuurin hahmottelu |
 | 28.11. | 8 | Käyttöliittymäluokan alustus, pelilogiikkaa |
-| 29.11. | 3 | Dokumentaatio, testausta |
-| Yht. | 26 |
+| 29.11. | 5 | Dokumentaatio, testausta |
+| Yht. | 28 |
 
  

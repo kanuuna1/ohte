@@ -4,7 +4,7 @@
 classDiagram
     UI <|-- ui
     services <|-- mastermind
-    repositories
+    repositories <|-- player_repository
 
 ```
 Pakkauksessa ui on käyttöliittymästä vastaava koodi, pakkauksessa services sovelluslogiikasta ja pakkauksessa repositories tietojen pysyväistallennuksesta vastaava koodi. 
