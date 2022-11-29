@@ -1,5 +1,5 @@
 #import pygame
-from ui import UI
+from ui.ui import UI
 
 
 def main():
