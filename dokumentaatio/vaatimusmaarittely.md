@@ -8,9 +8,7 @@ Tässä ohjelmistotekniikan harjoitustyössä on tarkoitus toteuttaa [Mastermind
 Käyttäjärooleja on vain yksi eli pelaaja.  
 
 ## Suunnitellut toiminnallisuudet
-### Tehty:
-Kone arpoo neljän nappulan rivin, jonka käyttäjän (pelaajan) tulee ratkoa. Pelaajalla on 10 arvausta käytettävissään. Yhdellä kierroksella pelaaja syöttää arvaamansa rivin, jonka jälkeen ohjelma näyttää valkoisen merkin jokaisesta nappulasta, joka on oikean värinen mutta väärässä paikassa, ja mustan merkin jokaisesta nappulasta, joka on oikean värinen ja oikeassa paikassa. Pelin voittaa arvaamalla rivin oikein. Ohjelma näyttää myös aiemmat arvaukset. 
 
-### Tekemättä: 
+Kone arpoo neljän nappulan rivin, jonka käyttäjän (pelaajan) tulee ratkoa. Pelaajalla on 10 arvausta käytettävissään. Yhdellä kierroksella pelaaja syöttää arvaamansa rivin, jonka jälkeen ohjelma näyttää valkoisen merkin jokaisesta nappulasta, joka on oikean värinen mutta väärässä paikassa, ja mustan merkin jokaisesta nappulasta, joka on oikean värinen ja oikeassa paikassa. Pelin voittaa arvaamalla rivin oikein. Ohjelma näyttää myös aiemmat arvaukset. 
 Ohjelma pitää kirjaa arvausten määrästä ja top-listalle pääsee ratkomalla koodin vähemmillä arvauksilla kuin aiemmat pelaajat.
-Myös näkymä pelin loppuessa arvausten määrän ylittyessä tai oikean rivin ratkaistaessa puuttuu vielä, ja siitä mahdollisuus uuden pelin aloittamiseen.
+Loppunäkymästä puuttuu vielä mahdollisuus uuden pelin aloittamiseen.

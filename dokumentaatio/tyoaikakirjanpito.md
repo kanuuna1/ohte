@@ -11,8 +11,14 @@
 | 6.12. | 6 | Käyttöliittymän tekoa TkInterillä |
 | 8.12 | 5 | Käyttöliittymää |
 | 9.12. | 6 | Services-luokka, importien selvittelyä |
-| 12.12. | 5 | Docstring, käyttöliittymä |
+| 12.12. | 5 | Docstring, käyttöliittymää |
 | 13.12. | 7 | Dokumentointia, tietokannan suunnittelu, käyttöliitymän parantelua |
-| Yht. | 62 |
+| 14.12. | 5 | Käyttöliittymää |
+| 15.12. | 5 | Tietokannan toteutusta |
+| 19.12. | 5 | Käyttöliittymän parantelua |
+| 20.12. | 6 | Dokumentaatiota, Docstring |
+| 21.12 | 6 | Lisää testejä, pylint |
+| 22.12. | 8 | Ohjelman viimeistelyä |
+| Yht. | 97 |
 
  
