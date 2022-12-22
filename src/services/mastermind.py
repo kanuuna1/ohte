@@ -12,12 +12,6 @@ class Mastermind:
 
     def __init__(self):
         """Luokan konstruktori, joka luo uuden peliolion.
-
-        Args:
-            size: ratkaistavan koodin pituus
-            code: ratkaistava koodi
-            guess: pelaajan arvaus
-            turn: kuvaa, monesko pelivuoro käynnissä
         """
         self.size = 4
         self.code = []
@@ -32,16 +26,17 @@ class Mastermind:
         Returns:
             Lista ratkaistavasta numerokoodista.
         """
-    
+
         self.code = random.sample(range(0, 5), self.size)
         return self.code
-    
+
     def compare(self, list1, list2):
         """
         Vertaa kahta listaa peli-idean mukaan.
 
         Returns:
-            Lista, jossa "black" kuvaa oikealla paikalla olevaa oikeaa numeroa ja "white" väärässä paikassa olevaa oikeaa numeroa.
+            Lista, jossa "black" kuvaa oikealla paikalla olevaa oikeaa numeroa
+            ja "white" väärässä paikassa olevaa oikeaa numeroa.
         """
 
         feedback = []
@@ -53,7 +48,7 @@ class Mastermind:
                     feedback.append("black")
                     list_1[count1] = None
                     list_2[count2] = None
-                        
+
         for count1, value1 in enumerate(list_1):
             for count2, value2 in enumerate(list_2):
                 if count1 != count2 and value1 == value2 and value1 is not None:
@@ -63,7 +58,6 @@ class Mastermind:
                     list_2[count2] = None
                     value2 = None
                     continue
-              
         return feedback
 
 
@@ -76,9 +70,11 @@ class Mastermind:
             return
         self.guess.append(num)
 
-  
+    def add_turn(self):
+        """
+        Kasvattaa pelivuoroa kuvaavaa arvoa.
 
-
-
-
-    
+        """
+        if self.turn < 10:
+            self.turn += 1
+            

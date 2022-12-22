@@ -1,7 +1,10 @@
-from tkinter import ttk, Tk, constants
+from tkinter import ttk, Tk, constants, StringVar
 import tkinter as tk
+import tkinter.messagebox
+from repositories.player_repository import (player_repository as default_player_repository)
 from services.mastermind import Mastermind
-from ui.end_view import EndView
+from services.player_service import PlayerService, NameExistsError
+
 
 
 
@@ -22,7 +25,6 @@ class BoardView:
         self.peg_size = 35
         self.status = tk.Label(root)
         self.colours = ["red", "blue", "yellow", "green", "orange", "purple"]
-        self.turn = 0
         self.mastermind = Mastermind()
         self._handle_click = handle_click
     
@@ -40,12 +42,14 @@ class BoardView:
     def draw_board_view(self):
         """"Näyttää pelinäkymän."""
         self.destroy()
+        self.mastermind = Mastermind()
         self.canvas = tk.Canvas(self.root, width=self.width, height=self.height)
         self.canvas.pack()
         self.create_ovals()
         self.status = tk.Label(self.root)
         self.status.pack()
         self.canvas.bind("<Button-1>", self.handle_guess)
+        
         
 
     def create_ovals(self):
@@ -58,52 +62,42 @@ class BoardView:
     def handle_guess(self, event=None):
         """"Luo pelaajan arvausta kuvaavat pallot."""
         index = self.canvas.find_withtag("current")[0] - 1
-        y1 = self.height-self.ball_size
+        y1 = self.height - self.ball_size
         colour = self.colours[index]
         self.mastermind.add_guess(index)
-        y1 = self.turn * self.ball_size
-        y2 = (self.turn + 1) * self.ball_size
+        y1 = self.mastermind.turn * self.ball_size
+        y2 = (self.mastermind.turn + 1) * self.ball_size
         i = len(self.mastermind.guess)
         self.canvas.create_oval(self.ball_size*(i-1), y1, self.ball_size*(i), y2, fill=colour, outline=colour)
         
+        if len(self.mastermind.guess) < 4:
+            return
+        self.canvas.unbind("<Button-1>")
+        self.check()
 
-        if len(self.mastermind.guess) >= 4:
-            #self.canvas.unbind("<Button-1>")
-            # miten seuraavaan näkymään?
-            self.canvas.bind("<Button-1>", self.check)
-           
        
     def check(self, event=None):
         """Luo oikeita värejä ja paikkoja kuvaavat pallot."""
         feedback = self.mastermind.compare(self.mastermind.guess, self.mastermind.code)
         self.draw_feedback(feedback)
-        self.turn += 1
-        #print(f"vuoro {self.turn}")
-        if self.turn >= 2:
-            # TODO: game over -näkymä ja näytä oikea rivi
-            # miten seuraavaan näkymään?
-            print("GAME OVER") 
-            self.status.config(text="game over")
-            self.canvas.unbind("<Button-1>")
-            self.status.pack()
-            #self.draw_end(False)
-            self.show_end(False)
+        self.mastermind.add_turn()
+
         if feedback == ["black", "black", "black", "black"]:
-            # miten seuraavaan näkymään?
-            print("You won")
-            self.status.config(text="You won!")
+            self.canvas.unbind("<Button-1>")    
+            self.show_result(True) 
+
+       
+        if self.mastermind.turn >= 2:
             self.canvas.unbind("<Button-1>")
-            self.status.pack()
-            self.show_end(True)
-            #self.draw_end(True)
-        
+            self.show_result(False)
+          
         self.mastermind.guess = []
         self.canvas.bind("<Button-1>", self.handle_guess)
         
 
     def draw_feedback(self, feedback):
-        x1 =  4* self.ball_size
-        y1 = self.turn * self.ball_size
+        x1 =  4 * self.ball_size
+        y1 = self.mastermind.turn * self.ball_size
         x2 = x1 + self.peg_size
         y2 = y1 + self.peg_size
 
@@ -112,33 +106,114 @@ class BoardView:
             x1 += self.peg_size
             x2 += self.peg_size
 
-    def show_end(self, win, event=None):
 
-        #self.status.config(text="game over")
-        #self.status.pack()
-        print("loppu")
+    def show_result(self, win, event=None):
+        self.canvas.unbind("<Button-1>")
         if win:
-            label_text = "Oikein!"
+            text="OIKEIN!"
         else:
-            label_text = "Game over"
-        label = tk.Label(self.canvas,text=label_text, fg="white", bg="black")
-        label.pack()
+            text="GAME OVER"
+        message_box = tk.messagebox.showinfo(title="Mastermind", message=text)   
         self.canvas.pack()
-        """ self._frame = ttk.Frame(master=self._root)
-
-        if win:
-            label_text = "Oikein!"
-        else:
-            label_text = "Game over"
-
-        heading_label = ttk.Label(master=self.canvas, text=label_text)  
-        button = ttk.Button(master=self._frame, text="Aloita uusi peli", command=self._handle_click)   
-        heading_label.grid(columnspan=2, sticky=constants.N, padx=5, pady=5)
-        button.grid(columnspan=2, padx=5, pady=5)
-        self._root.grid_columnconfigure(1, weight=1, minsize=300) """
+        self.show_end()       
     
-    def draw_end(self, win):
+
+    def show_end(self):
+        #TODO (tkinter.TclError: bad window path name ".!canvas2")
         self.destroy()
-        e = EndView(self.root, self._handle_click, win)
-        e.pack()
+        s = ShowTopPlayers(self.root, self.mastermind.turn, self._handle_click)
+        s.pack()
         
+    
+
+
+class ShowTopPlayers:
+    """Pelaajalistauksen näyttävä näkymä."""
+
+    def __init__(self, root, turns, handle_button_click, player_repository=default_player_repository):
+        """Luokan konstruktori. Luo uuden pelaajalistausnäkymän
+        Args:
+            root:
+                TKinter-elementti, jonka sisään näkymä alustetaan.
+            handle_button_click: Arvo,  jota kutsutaan, kun siirrytään seuraavaan näkymään
+        """
+        self._root = root
+        self._frame = None
+        self._handle_button_click = handle_button_click
+        self._player_repository = player_repository
+        self._name_entry = None
+        self.turns = turns
+        self._error_variable = None
+        self._error_label = None
+        self._initialize()
+            
+        
+    def pack(self):
+        """"Näyttää näkymän."""
+        self._frame.pack(fill=constants.X)
+            
+    def destroy(self):
+        """"Tuhoaa näkymän."""
+        self._frame.destroy()
+            
+    def _initialize(self):
+        self._frame = ttk.Frame(master=self._root)
+        name_label = ttk.Label(master=self._frame, text="Nimimerkki")
+        self._name_entry = ttk.Entry(master=self._frame)
+        self._error_variable = StringVar(self._frame)
+
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
+            foreground="red"
+        )
+
+        create_user_button = ttk.Button(
+            master=self._frame,
+            text="OK",
+            command=self._handle_player
+        )
+        
+        name_label.grid(row=0, padx=5, pady=5, sticky=constants.W)
+        self._name_entry.grid(row=0,padx=5, pady=5, sticky=constants.EW)
+        create_user_button.grid(row=1, padx=5, pady=5, sticky=constants.EW)
+        self._root.grid_columnconfigure(1, weight=1, minsize=300)
+        
+
+    def _handle_player(self):
+        name = self._name_entry.get()
+
+        #TODO: ERROR jos epäsopiva
+        player_service = PlayerService()
+        try:
+            
+            player_service.create_player(name, self.turns)
+        except NameExistsError:
+            #TODO: error
+            self._show_error("Nimimerkki on jo käytössä")
+
+
+        players = player_service.top_players()
+        heading_label = ttk.Label(master=self._frame, text="Top 5")  
+        heading_label.grid(columnspan=2, sticky=constants.N, padx=5, pady=5)
+
+        for player in players:
+            ttk.Label(self._frame, text=player).grid()
+
+        return_button = ttk.Button(
+            master=self._frame,
+            text="Palaa alkuun",
+            command=self._handle_button_click
+        )
+        
+        return_button.grid(padx=5, pady=5, sticky=constants.EW)
+        self._root.grid_columnconfigure(1, weight=1, minsize=300)
+
+
+    def _show_error(self, message):
+        self._error_variable.set(message)
+        self._error_label.grid()
+    
+
+    def _hide_error(self):
+        self._error_label.grid_remove()

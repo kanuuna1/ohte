@@ -12,7 +12,7 @@ class UI:
         """Luokan konstruktori. Luo uuden käyttöliittymästä vastaavan luokan.
         Args:
             root:
-                TKinter-elementti, jonka sisään käyttöliittymä alustetaan.
+                TKinter-elementti, johon käyttöliittymä alustetaan.
         """
 
         self._root = root
@@ -32,35 +32,14 @@ class UI:
         self._hide_current_view()
         self._current_view = CreateStartView(self._root, self._show_board_view)
         self._current_view.pack()
-
-    def _handle_start_button(self):
-        self._show_board_view()
     
     def _show_board_view(self):
         self._hide_current_view()
-        self._current_view = BoardView(self._root, self._handle_start_button)
-        self._current_view.pack()
-        
+        self._current_view = BoardView(self._root, self._show_start_view)
+        self._current_view.pack()       
     
     def _show_end_view(self):
         self._hide_current_view()
-        self._current_view = EndView(self._root, self._handle_start_button, True)
+        self._current_view = EndView(self._root, True, self._show_start_view)
         self._current_view.pack()
 
-        
-
-    
-        
-
-
-
-
-if __name__=="__main__":
-    #print("Hei")
-    window = Tk()
-    window.title("Mastermind")
-
-    ui = UI(window)
-    ui.start()
-
-    window.mainloop()
