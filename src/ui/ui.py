@@ -2,7 +2,6 @@ from tkinter import Tk, ttk, constants
 from services.mastermind import Mastermind
 from ui.board_view import BoardView
 from ui.create_start_view import CreateStartView
-from ui.end_view import EndView
 
 
 class UI:
@@ -37,9 +36,5 @@ class UI:
         self._hide_current_view()
         self._current_view = BoardView(self._root, self._show_start_view)
         self._current_view.pack()       
-    
-    def _show_end_view(self):
-        self._hide_current_view()
-        self._current_view = EndView(self._root, True, self._show_start_view)
-        self._current_view.pack()
+
 

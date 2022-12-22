@@ -11,4 +11,6 @@ Käyttäjärooleja on vain yksi eli pelaaja.
 
 Kone arpoo neljän nappulan rivin, jonka käyttäjän (pelaajan) tulee ratkoa. Pelaajalla on 10 arvausta käytettävissään. Yhdellä kierroksella pelaaja syöttää arvaamansa rivin, jonka jälkeen ohjelma näyttää valkoisen merkin jokaisesta nappulasta, joka on oikean värinen mutta väärässä paikassa, ja mustan merkin jokaisesta nappulasta, joka on oikean värinen ja oikeassa paikassa. Pelin voittaa arvaamalla rivin oikein. Ohjelma näyttää myös aiemmat arvaukset. 
 Ohjelma pitää kirjaa arvausten määrästä ja top-listalle pääsee ratkomalla koodin vähemmillä arvauksilla kuin aiemmat pelaajat.
-Loppunäkymästä puuttuu vielä mahdollisuus uuden pelin aloittamiseen.
+
+## Tekemättä jääneet toiminnallisuudet 
+Loppunäkymästä puuttuu mahdollisuus uuden pelin aloittamiseen. Lopussa voisi nimimerkkiä kysyä vain siinä tapauksessa, että pelaaja pääsee top viiteen. Lisäksi voisi lisätä mahdollisuuden valita ratkaistavan koodin pituus ja sallia saman värin toistua koodissa. 

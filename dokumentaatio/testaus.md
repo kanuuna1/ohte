@@ -10,7 +10,9 @@ Sovelluslogiikasta vastaavaa ```Mastermind```-luokkaa testataan TestMastermind-t
 Reposiotorio-luokkaa ```PlayerRepository``` testataan vain testeissä käytössä olevilla tiedostoilla. Tiedostojen nimet on konfiguroitu .env.test-tiedostoon. ```PlayerRepository```-luokkaa testataan TestPlayerRepository-testiluokalla.
 
 ### Testauskattavuus
-Käyttöliittymää lukuunottamttta testauksen haarautumakattavuus on 94 %. Myös tiedostot build.py- ja initialize_database.py jätettiin testikattavuuden ulkopuolelle.
+Käyttöliittymää lukuunottamttta testauksen haarautumakattavuus on 94 %:
+![testikattavuusraportti](https://github.com/kanuuna1/ohte/blob/master/dokumentaatio/kuvat/coverage.png)
+Myös tiedostot build.py- ja initialize_database.py jätettiin testikattavuuden ulkopuolelle.
 
 ## Järjestelmätestaus
 ### Toiminnallisuudet

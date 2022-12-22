@@ -25,7 +25,8 @@ class CreateStartView:
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         heading_label = ttk.Label(master=self._frame, text="Tervetuloa!")
-        label = ttk.Label(master=self._frame, text="Tähän tulee peliohjeet")
+        directions = "Tehtänä on ratkoa nelivärinen koodi.\n Klikkaa alariviltä valitsemasi väri. \n Valittuasi neljä väriä saat palautteen,\n jossa musta pallo tarkoittaa oikeaa väriä oikealla paikalla ja \n valkoinen oikeaa väriä väärällä paikalla. \n Peli päättyy, kun arvaat koodin oikean tai kun 10 vuoroa on käytetty."
+        label = ttk.Label(master=self._frame, text=directions)
         button = ttk.Button(master=self._frame, text="Aloita peli", command=self._handle_button_click)
         
        
