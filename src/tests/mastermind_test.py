@@ -54,3 +54,12 @@ class TestMastermind(unittest.TestCase):
         self.mastermind.code = [1]
         self.mastermind.add_guess(1)
         self.assertEqual(self.mastermind.compare(self.mastermind.guess, self.mastermind.code), ["black"])
+    
+    def test_add_turn_works(self):
+        self.mastermind.add_turn()
+        self.assertEqual(self.mastermind.turn, 1)
+    
+    def test_add_turn_works_when_too_large(self):
+        for i in range (15):
+            self.mastermind.add_turn()
+        self.assertEqual(self.mastermind.turn, 10)
