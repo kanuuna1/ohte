@@ -1,15 +1,6 @@
 # Arkkitehtuurikuvaus
 ## Rakenne
 Ohjelman rakenne noudattaa kolmitasoista arkkitehtuuria. Ohjelman pakkausrakenne on seuraavanlainen:
-
-```mermaid
-classDiagram
-    UI--> services
-    services--> repositories
-    services : mastermind
-    services : player_service
-    repositories : player_repository
-```
 ![arkkitehtuuri](https://github.com/kanuuna1/ohte/blob/master/dokumentaatio/kuvat/arkkitehtuurikaavio.png)
 
 Pakkauksessa ui on käyttöliittymästä vastaava koodi, pakkauksessa services sovelluslogiikasta ja pakkauksessa repositories tietojen pysyväistalletuksesta vastaava koodi. 
