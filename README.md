@@ -1,5 +1,5 @@
 # Ohjelmistotekniikan harjoitustyö
-Tässä ohjelmistotekniikan harjoitustyössä on tarkoitus toteuttaa Mastermind-peli. 
+Tässä ohjelmistotekniikan harjoitustyössä on tarkoitus toteuttaa [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game))-peli. Pelissä on tarkoitus arvata ohjelman arpoma nelivärinen kooodi. Ohjelma antaa palautetta arvauksista. Peli päättyy, kun pelaaja arvaa rivin oikein tai kun 10 vuoroa on käytetty. 
 ## Dokumentaatio
 - [Vaatimusmäärittely](https://github.com/kanuuna1/ohte/blob/master/dokumentaatio/vaatimusmaarittely.md)
 - [Työaikakirjanpito](https://github.com/kanuuna1/ohte/blob/master/dokumentaatio/tyoaikakirjanpito.md)

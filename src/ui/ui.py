@@ -1,6 +1,6 @@
 from tkinter import Tk, ttk, constants
 from services.mastermind import Mastermind
-from ui.board_view import BoardView
+from ui.board_view import BoardView, ShowTopPlayers
 from ui.create_start_view import CreateStartView
 
 
@@ -35,6 +35,8 @@ class UI:
     def _show_board_view(self):
         self._hide_current_view()
         self._current_view = BoardView(self._root, self._show_start_view)
-        self._current_view.pack()       
+        self._current_view.pack() 
+
+    
 
 

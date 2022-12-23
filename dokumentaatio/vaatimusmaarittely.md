@@ -13,4 +13,4 @@ Kone arpoo neljän nappulan rivin, jonka käyttäjän (pelaajan) tulee ratkoa. P
 Ohjelma pitää kirjaa arvausten määrästä ja top-listalle pääsee ratkomalla koodin vähemmillä arvauksilla kuin aiemmat pelaajat.
 
 ## Tekemättä jääneet toiminnallisuudet 
-Loppunäkymästä puuttuu mahdollisuus uuden pelin aloittamiseen. Lopussa voisi nimimerkkiä kysyä vain siinä tapauksessa, että pelaaja pääsee top viiteen. Lisäksi voisi lisätä mahdollisuuden valita ratkaistavan koodin pituus ja sallia saman värin toistua koodissa. 
+Loppunäkymästä puuttuu mahdollisuus uuden pelin aloittamiseen. Lopussa voisi nimimerkkiä kysyä vain siinä tapauksessa, että pelaaja pääsee top viiteen. Kaikkien mahdollisten virheiden käsittelyyn ei ole ohjelmassa varauduttu. Lisäksi voisi lisätä mm. mahdollisuuden valita ratkaistavan koodin pituus, sallia saman värin toistua koodissa ja perua värin valinta. 

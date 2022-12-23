@@ -43,18 +43,16 @@ class BoardView:
         self.mastermind = Mastermind()
         self.canvas = tk.Canvas(self.root, width=self.width, height=self.height)
         self.canvas.pack()
-        self.create_ovals()
-        self.canvas.bind("<Button-1>", self.handle_guess)
+        self._create_ovals()
+        self.canvas.bind("<Button-1>", self._handle_guess)
 
-    def create_ovals(self):
-        """"Luo värivaihtoehtoja kuvaavat pallot."""
+    def _create_ovals(self):
         y1 = self.height-self.ball_size
         for i in range(6):
             colour = self.colours[i]
             self.canvas.create_oval(i*self.ball_size, y1, (i+1)*self.ball_size, self.height, fill=colour, outline=colour)
 
-    def handle_guess(self, event=None):
-        """"Luo pelaajan arvausta kuvaavat pallot."""
+    def _handle_guess(self, event=None):
         index = self.canvas.find_withtag("current")[0] - 1
         y1 = self.height - self.ball_size
         colour = self.colours[index]
@@ -67,29 +65,29 @@ class BoardView:
         if len(self.mastermind.guess) < 4:
             return
         self.canvas.unbind("<Button-1>")
-        self.check()
+        self._check()
 
 
-    def check(self, event=None):
+    def _check(self, event=None):
         """Luo oikeita värejä ja paikkoja kuvaavat pallot."""
         feedback = self.mastermind.compare(self.mastermind.guess, self.mastermind.code)
-        self.draw_feedback(feedback)
+        self._draw_feedback(feedback)
         self.mastermind.add_turn()
 
         if feedback == ["black", "black", "black", "black"]:
             self.canvas.unbind("<Button-1>")    
-            self.show_result(True) 
+            self._show_result(True) 
 
        
-        if self.mastermind.turn >= 2:
+        if self.mastermind.turn >= 10:
             self.canvas.unbind("<Button-1>")
-            self.show_result(False)
+            self._show_result(False)
           
         self.mastermind.guess = []
-        self.canvas.bind("<Button-1>", self.handle_guess)
+        self.canvas.bind("<Button-1>", self._handle_guess)
         
 
-    def draw_feedback(self, feedback):
+    def _draw_feedback(self, feedback):
         x1 =  4 * self.ball_size
         y1 = self.mastermind.turn * self.ball_size
         x2 = x1 + self.peg_size
@@ -101,7 +99,7 @@ class BoardView:
             x2 += self.peg_size
 
 
-    def show_result(self, win, event=None):
+    def _show_result(self, win, event=None):
         self.canvas.unbind("<Button-1>")
         if win:
             text="OIKEIN!"
@@ -109,22 +107,20 @@ class BoardView:
             text="GAME OVER"
         message_box = tk.messagebox.showinfo(title="Mastermind", message=text)   
         self.canvas.pack()
-        self.show_end()       
+        self._show_end()       
     
 
-    def show_end(self):
-        #TODO (tkinter.TclError: bad window path name ".!canvas2")
-        self.canvas.delete(all)
+    def _show_end(self):
+        #TODO 
+        self.destroy()
         s = ShowTopPlayers(self.root, self.mastermind.turn, self._handle_click)
         s.pack()
-        
-    
 
 
 class ShowTopPlayers:
     """Pelaajalistauksen näyttävä näkymä."""
 
-    def __init__(self, root, turns, handle_button_click, player_repository=default_player_repository):
+    def __init__(self, root, turns, handle_button_click):
         """Luokan konstruktori. Luo uuden pelaajalistausnäkymän
         Args:
             root:
@@ -134,7 +130,6 @@ class ShowTopPlayers:
         self._root = root
         self._frame = None
         self._handle_button_click = handle_button_click
-        self._player_repository = player_repository
         self._name_entry = None
         self.turns = turns
         self._error_variable = None
@@ -169,8 +164,8 @@ class ShowTopPlayers:
         )
         
         name_label.grid(row=0, padx=5, pady=5, sticky=constants.EW)
-        self._name_entry.grid(row=0,padx=5, pady=5, sticky=constants.EW)
-        create_user_button.grid(row=1, padx=5, pady=5, sticky=constants.EW)
+        self._name_entry.grid(row=1,padx=5, pady=5, sticky=constants.EW)
+        create_user_button.grid(row=2, padx=5, pady=5, sticky=constants.EW)
         self._root.grid_columnconfigure(1, weight=1, minsize=300)
 
 
@@ -178,13 +173,12 @@ class ShowTopPlayers:
         name = self._name_entry.get()
         if len(name) == 0 or len(name) > 20:
             self._show_error("Nimimerkin tulee olla 1-20 merkin pituinen")
-
+        
         player_service = PlayerService()
         try:
         
             player_service.create_player(name, self.turns)
         except NameExistsError:
-            #TODO: error
             self._show_error("Nimimerkki on jo käytössä")
 
         players = player_service.top_players()
@@ -193,14 +187,7 @@ class ShowTopPlayers:
 
         for player in players:
             ttk.Label(self._frame, text=player).grid()
-
-        return_button = ttk.Button(
-            master=self._frame,
-            text="Palaa alkuun",
-            command=self._handle_button_click
-        )
-        
-        return_button.grid(padx=5, pady=5, sticky=constants.EW)
+        ttk.Button(self._root, text="Lopeta", command=self._root.destroy).pack()
         self._root.grid_columnconfigure(1, weight=1, minsize=300)
 
 

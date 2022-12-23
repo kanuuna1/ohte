@@ -15,7 +15,11 @@ Käyttöliittymää lukuunottamttta testauksen haarautumakattavuus on 94 %:
 Myös tiedostot build.py- ja initialize_database.py jätettiin testikattavuuden ulkopuolelle.
 
 ## Järjestelmätestaus
+Sovellusta on testattu vain Linux-ympäristössä.
+
 ### Toiminnallisuudet
 
 Määrittelydokumentissa luetellut toiminnallisuudet on käyty läpi. Kaikkien toiminnallisuuksien yhteydessä on syötekentät yritetty täyttää myös virheellisillä arvoilla kuten tyhjillä.
 
+## Sovellukseen jääneet laatuongelmat
+Sovelluksen loppunäkymä ei toimi kunnolla. 
